@@ -1,0 +1,20 @@
+.chat-item {
+    margin: 5px 15px;
+    padding: 10px;
+}
+
+.chat-members {
+    font-weight: bold;
+}
+
+.last-message {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover .chat-item {
+    background-color: rgb(182, 218, 236)
+}

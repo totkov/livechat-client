@@ -1,0 +1,9 @@
+h3 {
+    text-align: center;
+    margin: 20px;
+}
+
+.chat-container {
+    height: 50vh;
+    overflow-y: scroll;
+}

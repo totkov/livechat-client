@@ -1,0 +1,25 @@
+.wrapper {
+    background-color: rgb(238, 247, 255);
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(124, 196, 255);
+    border-radius: 5px;
+}
+
+.user {
+    color: rgb(100, 100, 100);
+}
+
+.text {
+    font-weight: bold;
+}
+
+.date-time {
+    color: rgb(100, 100, 100);
+    text-align: right
+}
+
+.mine-message {
+    text-align: right;
+    background-color: rgb(169, 216, 255);
+}

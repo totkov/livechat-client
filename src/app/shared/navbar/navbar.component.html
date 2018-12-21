@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      (click)="toggleCollapse()" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <p class="navbar-brand">LiveChat</p>
+  </div>
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [class.collapse]="isCollapsed">
+
+    <ul class="nav navbar-nav">
+      <li>
+        <a [routerLink]="['/account/welcome']">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/chat']">Chats</a>
+      </li>
+    </ul>
+
+    <app-login-nav-bar></app-login-nav-bar>
+
+  </div>
+
+</nav>

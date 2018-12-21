@@ -1,0 +1,7 @@
+<app-chat-create #createChatComponent></app-chat-create>
+
+<h2>My chats</h2>
+
+<div>
+  <app-chat-list-item *ngFor="let chat of chats" [chat]="chat"></app-chat-list-item>
+</div>

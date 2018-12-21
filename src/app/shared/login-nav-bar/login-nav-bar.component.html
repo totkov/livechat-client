@@ -1,0 +1,13 @@
+<div *ngIf="hasLoggedUser" class="nav navbar-nav navbar-right">
+  <p class="navbar-text">Hello, {{loggedUserEmail}}</p>
+  <button (click)="logout()" type="button" class="btn btn-default navbar-btn">Log out</button>
+</div>
+
+<div *ngIf="!hasLoggedUser" class="nav navbar-nav navbar-right">
+  <li>
+    <a [routerLink]="['/authentication/login']">Log in</a>
+  </li>
+  <li>
+    <a [routerLink]="['/authentication/signup']">Sign up</a>
+  </li>
+</div>

@@ -1,0 +1,42 @@
+<h2>Sign up</h2>
+
+<!-- Reactive Form -->
+
+<form [formGroup]="signupForm" (ngSubmit)="signin()">
+    <div>
+        <label>Email</label>
+        <input type="text" name="email" formControlName="email">
+        <span *ngIf="f.email.errors && f.email.touched || (mouseover && !signupForm.valid)">
+            <span *ngIf="f.email.errors.required">Email is required!</span>
+            <span *ngIf="f.email.errors.email">Please enter valid email!</span>
+        </span>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" formControlName="password">
+        <span *ngIf="f.password.errors && f.password.touched || (mouseover && !signupForm.valid)">
+            <span *ngIf="f.password.errors.required">Password is required!</span>
+            <span *ngIf="f.password.errors.minlength">Password min length is 6!</span>
+        </span>
+    </div>
+    <div>
+        <label>First name</label>
+        <input type="text" name="firstname" formControlName="firstname">
+        <span *ngIf="f.firstname.errors && f.firstname.touched || (mouseover && !signupForm.valid)">
+            <span *ngIf="f.firstname.errors.required">First name is required!</span>
+        </span>
+    </div>
+    <div>
+        <label>Last name</label>
+        <input type="text" name="lastname" formControlName="lastname">
+        <span *ngIf="f.lastname.errors && f.lastname.touched || (mouseover && !signupForm.valid)">
+            <span *ngIf="f.lastname.errors.required">Last name is required!</span>
+        </span>
+    </div>
+    <div>
+        <span (mouseenter)="mouseover=true" (mouseleave)="mouseover=false">
+            <input type="submit" value="Sign up" [disabled]="signupForm.invalid || loading">
+            <span *ngIf="loading">Loading</span>
+        </span>
+    </div>
+</form>

@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label class="sr-only">Email address</label>
+  <input #emailInput class="form-control" placeholder="Enter email">
+</div>
+
+<button class="btn btn-default" (click)="addEmail(emailInput.value)">Add email in list</button>
+
+<ul>
+  <li *ngFor="let email of emails">{{email}}</li>
+</ul>
+
+<button class="btn btn-default" (click)="create()">Create chat room</button>

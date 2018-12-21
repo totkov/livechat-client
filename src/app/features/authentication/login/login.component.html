@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+    <h2>Log in</h2>
+
+    <!-- Template-driven form -->
+
+    <form #loginForm=ngForm (ngSubmit)="login(loginForm.value)" novalidate>
+        <div class="row">
+            <div class="col-md-2">
+                <label>Email</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="email" class="form-control" (ngModel)="email" #emailInput=ngModel required>
+            </div>
+            <div class="col-md-6">
+                <span class="help-block" *ngIf="!emailInput?.valid && emailInput.touched || (mouseover && !loginForm.valid)">Email is required!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>Password</label>
+            </div>
+            <div class="col-md-4">
+                <input type="password" name="password" class="form-control" (ngModel)="password" #passwordInput=ngModel required>
+            </div>
+            <div class="col-md-6">
+                <span class="help-block" *ngIf="!passwordInput?.valid && passwordInput.touched || (mouseover && !loginForm.valid)">Password is required!</span>
+            </div>
+        </div>
+        <div>
+            <span (mouseenter)="mouseover=true" (mouseleave)="mouseover=false">
+                <input type="submit" value="Log in" [disabled]="loginForm.invalid || loading" class="btn btn-default">
+                <span class="help-block" *ngIf="loading">Loading</span>
+            </span>
+        </div>
+    </form>
+
+</div>
