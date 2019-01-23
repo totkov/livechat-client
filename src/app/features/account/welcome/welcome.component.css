@@ -1,0 +1,23 @@
+.wrapper {
+    width: 80%;
+    margin: auto;
+}
+
+.column {
+    display: inline-block;
+    width: 49%;
+}
+
+img {
+    display: block;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+a {
+    display: block;
+    width: 50%;
+    margin: auto;
+}

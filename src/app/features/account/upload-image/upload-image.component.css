@@ -1,0 +1,10 @@
+.wrapper {
+    width: 50%;
+    margin: auto;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
+
+input {
+    margin-bottom: 10px;
+}

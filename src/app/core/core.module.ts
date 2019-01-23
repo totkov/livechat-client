@@ -3,12 +3,14 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { AuthGuard } from '../guards/auth.guard';
 import { ChatService } from '../services/chat.service';
+import { AccountService } from '../services/account.service';
 
 @NgModule({
   providers: [
     AuthenticationService,
     AuthGuard,
-    ChatService
+    ChatService,
+    AccountService
   ]
 })
 export class CoreModule {
