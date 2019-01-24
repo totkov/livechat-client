@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { ChatService } from '../../../services/chat.service';
 
@@ -8,6 +8,9 @@ import { ChatService } from '../../../services/chat.service';
   styleUrls: ['./send-message.component.css']
 })
 export class SendMessageComponent implements OnInit {
+
+  @ViewChild('messageInput')
+  private textBox: ElementRef;
 
   @Input()
   chatId;
@@ -29,6 +32,7 @@ export class SendMessageComponent implements OnInit {
       data => {
         console.log(data);
         this.successfullySend.emit({message: message, chatId: this.chatId, messageId: data.messageId});
+        this.textBox.nativeElement.value = '';
       },
       error => {
         console.log(error);

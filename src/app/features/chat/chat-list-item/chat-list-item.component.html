@@ -1,6 +1,6 @@
-<a [routerLink]="['/chat/details', chat.id]">
-  <div class="bg-info chat-item">
+<li id="chat-list-item" class="list-group-item">
+  <a [routerLink]="['/chat/details', chat.id]">
     <p class="chat-members">{{chat.users}}</p>
     <p class="last-message">{{chat.lastMessage}}</p>
-  </div>
-</a>
+  </a>
+</li>

@@ -1,25 +1,46 @@
-.wrapper {
-    background-color: rgb(238, 247, 255);
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid rgb(124, 196, 255);
+.container {
+    width: 90%;
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
     border-radius: 5px;
-}
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    overflow: hidden;
+  }
+  
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  .time {
+    float: right;
+    color: #aaa;
+  }
 
-.user {
-    color: rgb(100, 100, 100);
-}
+  .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+    margin-left: 8%;
+  }
+  
+  .darker .time {
+    float: left;
+    color: #999;
+  }
 
-.text {
-    font-weight: bold;
-}
-
-.date-time {
-    color: rgb(100, 100, 100);
-    text-align: right
-}
-
-.mine-message {
-    text-align: right;
-    background-color: rgb(169, 216, 255);
-}
+  .darker.container img {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }

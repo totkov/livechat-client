@@ -1,9 +1,7 @@
-<div [ngClass]="{'wrapper' : true, 'mine-message': isMineMessage}">
-  <div class="row user">
-    <div class="col-md-8">{{message.authorFirstName}} {{message.authorLastName}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 text">{{message.text}}</div>
-    <div class="col-md-4 date-time">{{message.dateTime | date:'d.MM.yyyy H:mm Z' : 'UTC'}}</div>
-  </div>
+<div [ngClass]="{'container' : true, 'darker': isMineMessage}">
+  <a href="#" title="{{message.authorFirstName}} {{message.authoeLastName}}">
+    <img src="http://localhost:5000/{{message.profilePictureUrl}}" alt="Avatar" style="width:100%;">
+  </a>
+  <p>{{message.text}}</p>
+  <span class="time">{{message.dateTime | date:'d.MM.yyyy H:mm' : 'UTC'}}</span>
 </div>

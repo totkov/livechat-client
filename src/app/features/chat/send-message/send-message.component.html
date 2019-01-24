@@ -1,4 +1,4 @@
-<div class="form-group">
-  <textarea #messageInput type="text" class="form-control"></textarea>
-  <button (click)="send(messageInput.value)" class="btn btn-primary">Send</button>
+<div class="wrapper input-group">
+  <textarea #messageInput class="form-control custom-control" rows="3" style="resize:none"></textarea>
+  <span (click)="send(messageInput.value)" class="input-group-addon btn btn-primary">Send</span>
 </div>

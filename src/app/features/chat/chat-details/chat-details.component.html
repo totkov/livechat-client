@@ -1,10 +1,10 @@
 <h3>
-  <span *ngFor="let user of chat.users">
-    {{user.firstName}} {{user.lastName}} ({{user.email}});
+  <span *ngFor="let user of chat.users" title="{{user.email}}">
+    {{user.firstName}} {{user.lastName}}; 
   </span>
 </h3>
 
-<div class="chat-container">
+<div #scrollMe class="chat-container">
   <app-message-item *ngFor="let message of chat.messages" [message]="message"></app-message-item>
 </div>
 
