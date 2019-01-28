@@ -1,0 +1,22 @@
+.wrapper {
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.list-group-item {
+    height: 64px;
+}
+
+.img {
+    max-height: 100%;
+}
+
+.username {
+    margin-left: 10px;
+}
+
+.chat-btn {
+    float: right;
+}

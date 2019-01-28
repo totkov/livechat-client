@@ -1,14 +1,14 @@
 <div class="wrapper">
     <div class="column">
         <div class="img">
-            <img src="http://localhost:5000/{{account.profilePicturePath}}" alt="">
+            <img src="http://localhost:5000/{{account?.profilePicturePath}}" alt="">
         </div>
         <a class="btn btn-default" [routerLink]="['/account/upload-picture']">Add or update picture</a>
     </div>
     <div class="column">
-        <p>Id: {{account.id}}</p>
-        <p>Email: {{account.email}}</p>
-        <p>First name: {{account.firstName}}</p>
-        <p>Last name: {{account.lastName}}</p>
+        <p>Id: {{account?.id}}</p>
+        <p>Email: {{account?.email}}</p>
+        <p>First name: {{account?.firstName}}</p>
+        <p>Last name: {{account?.lastName}}</p>
     </div>
 </div>

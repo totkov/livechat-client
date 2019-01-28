@@ -1,6 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class NotificationService {
   ) {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(
-        'http://localhost:5000/notifications', {
+        `${environment.api.baseUrl}${environment.api.notifications}`, {
           accessTokenFactory: () => {
             return '' + this.authenticationService.getToken();
           }
@@ -33,7 +34,7 @@ export class NotificationService {
       .catch(err => console.log('Error while establishing connection :(' + err));
   }
 
-  getEmitter() {
+  public getEmitter() {
     return this.newMessageEventEmitter;
   }
 

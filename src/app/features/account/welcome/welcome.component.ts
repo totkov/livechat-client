@@ -24,7 +24,6 @@ export class WelcomeComponent implements OnInit {
   private loadData() {
     this.accountService.getMyAccountInfo().pipe(first()).subscribe(account => {
       this.account = account;
-      console.log(this.account);
     });
   }
 }

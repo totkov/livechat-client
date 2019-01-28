@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ChatsListItemModel } from '../../../models/chats-list-item-model';
 
 @Component({
   selector: 'app-chat-list-item',
@@ -7,11 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChatListItemComponent implements OnInit {
 
-  @Input() chat;
+  @Input() chat: ChatsListItemModel;
 
   constructor() { }
 
   ngOnInit() {
+    if (this.chat.lastMessageDate.toString().slice(-1) !== 'Z') {
+      this.chat.lastMessageDate = new Date(this.chat.lastMessageDate + 'Z');
+    }
   }
 
 }

@@ -19,5 +19,6 @@ export class MessageItemComponent implements OnInit {
 
   ngOnInit() {
     this.isMineMessage = this.message.authorId === this.authenticationService.getLoggedUserId();
+    this.message.dateTime = new Date(this.message.dateTime + 'Z');
   }
 }

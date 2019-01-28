@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Observable } from '../../../node_modules/rxjs';
+import { ChatsListItemModel } from '../models/chats-list-item-model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,40 +16,50 @@ export class ChatService {
     private http: HttpClient
   ) { }
 
-  getAll() {
-    return this.http.get<any>(`http://localhost:5000/api/chats/GetMyChats`, {
-      headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token)
-    });
+  public getAll(): Observable<ChatsListItemModel[]> {
+    return this.http
+      .get<ChatsListItemModel[]>(`${environment.api.apiUrl}${environment.api.chats}GetMyChats`, {
+          headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token)
+        }
+      );
   }
 
-  getById(id: string) {
-    return this.http.get<any>(`http://localhost:5000/api/chats/GetChat`, {
+  public getById(id: string): Observable<any> {
+    return this.http.get<any>(`${environment.api.apiUrl}${environment.api.chats}GetChat`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token),
       params: new HttpParams().set('id', id)
     });
   }
 
-  create(userEmails: string[]) {
-    return this.http.post<any>('http://localhost:5000/api/chats/CreateChat',
-      { userEmails: userEmails },
-      { headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token) })
-      .pipe(map(data => {
-        return data;
-      }));
+  public create(userId: number): any {
+    return this.http.post<any>(`${environment.api.apiUrl}${environment.api.chats}CreateChat`, {}, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token),
+      params: new HttpParams().set('userId', userId.toString())
+    })
+    .pipe(
+      map(result => {
+        if (result.chatId !== -1) {
+          return result.chatId;
+        }
+      })
+    );
   }
 
-  sendMessage(chatId: string, message: string) {
-    return this.http.post<any>('http://localhost:5000/api/chats/SendMessage',
-      {
-        utcdate: new Date().toISOString(),
-        text: message
-      },
-      {
-        headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token),
-        params: new HttpParams().set('chatId', chatId)
+  public sendMessage(chatId: string, message: string): any {
+    return this.http.post<any>(`${environment.api.apiUrl}${environment.api.chats}SendMessage`, {
+      utcdate: new Date().toISOString(),
+      text: message
+    },
+    {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token),
+      params: new HttpParams().set('chatId', chatId)
+    })
+    .pipe(
+      map(result => {
+        if (result.messageId !== -1) {
+          return result.messageId;
+        }
       })
-      .pipe(map(data => {
-        return data;
-      }));
+    );
   }
 }

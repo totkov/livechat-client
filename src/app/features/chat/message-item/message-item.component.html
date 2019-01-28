@@ -3,5 +3,5 @@
     <img src="http://localhost:5000/{{message.profilePictureUrl}}" alt="Avatar" style="width:100%;">
   </a>
   <p>{{message.text}}</p>
-  <span class="time">{{message.dateTime | date:'d.MM.yyyy H:mm' : 'UTC'}}</span>
+  <span class="time" title="{{message.dateTime | date:'d.MM.yyyy HH:mm:ss'}}">{{message.dateTime | date:'HH:mm'}}</span>
 </div>

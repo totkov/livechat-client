@@ -14,8 +14,11 @@ import { NotificationService } from '../../../services/notification.service';
 })
 export class ChatDetailsComponent implements OnInit, AfterViewChecked {
 
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  @ViewChild('scrollMe')
+  private myScrollContainer: ElementRef;
+
   chat: any;
+
   private hubConnection: HubConnection;
 
   constructor(
@@ -26,11 +29,11 @@ export class ChatDetailsComponent implements OnInit, AfterViewChecked {
   ) { }
 
   ngOnInit() {
+    this.loadChat();
+
     this.notificationService.getEmitter().subscribe(() => {
-      console.log('Hello!');
       this.loadChat();
     });
-    this.loadChat();
   }
 
   ngAfterViewChecked() {

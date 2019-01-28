@@ -30,7 +30,6 @@ export class SendMessageComponent implements OnInit {
   send(message: string) {
     this.chatService.sendMessage(this.chatId, message).pipe(first()).subscribe(
       data => {
-        console.log(data);
         this.successfullySend.emit({message: message, chatId: this.chatId, messageId: data.messageId});
         this.textBox.nativeElement.value = '';
       },

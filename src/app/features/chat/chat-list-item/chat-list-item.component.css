@@ -1,11 +1,23 @@
 .chat-members {
     font-weight: bold;
-}
-
-.last-message {
-    color: black;
+    color: #3d62c7;
 }
 
 a {
+    color: black;
     text-decoration: none;
+}
+
+.last-message {
+    float: left;
+    width: 80%;
+}
+
+.date {
+    width: 20%;
+    float: right;
+}
+
+.author {
+    font-weight: bold;
 }

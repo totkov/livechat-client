@@ -8,12 +8,21 @@ import { ChatCreateComponent } from './chat-create/chat-create.component';
 import { ChatDetailsComponent } from './chat-details/chat-details.component';
 import { MessageItemComponent } from './message-item/message-item.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [ChatListComponent, ChatListItemComponent, ChatCreateComponent, ChatDetailsComponent, MessageItemComponent, SendMessageComponent],
+  declarations: [
+    ChatListComponent,
+    ChatListItemComponent,
+    ChatCreateComponent,
+    ChatDetailsComponent,
+    MessageItemComponent,
+    SendMessageComponent
+  ],
   imports: [
     CommonModule,
-    ChatRoutingModule
+    ChatRoutingModule,
+    SharedModule
   ]
 })
 export class ChatModule { }

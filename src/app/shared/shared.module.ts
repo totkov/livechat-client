@@ -5,7 +5,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginNavBarComponent } from './login-nav-bar/login-nav-bar.component';
 
 @NgModule({
-  declarations: [NavbarComponent, LoginNavBarComponent],
+  declarations: [
+    NavbarComponent,
+    LoginNavBarComponent
+  ],
   imports: [
     CommonModule,
     RouterModule

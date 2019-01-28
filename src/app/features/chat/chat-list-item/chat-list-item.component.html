@@ -1,6 +1,14 @@
 <li id="chat-list-item" class="list-group-item">
   <a [routerLink]="['/chat/details', chat.id]">
-    <p class="chat-members">{{chat.users}}</p>
-    <p class="last-message">{{chat.lastMessage}}</p>
+    <p class="chat-members">
+      <span *ngFor="let name of chat?.users">{{name}}; </span>
+    </p>
+    <div class="container">
+      <p class="last-message">
+        <span class="author">{{chat?.lastMessageAuthor}} </span>
+        <span>{{chat?.lastMessageText}}</span>
+      </p>
+      <p class="date">{{chat?.lastMessageDate | date:'d.MM.yyyy HH:mm'}}</p>
+    </div>
   </a>
 </li>
