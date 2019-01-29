@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../../services/account.service';
 import { first } from '../../../../../node_modules/rxjs/operators';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-upload-image',
@@ -10,7 +11,8 @@ import { first } from '../../../../../node_modules/rxjs/operators';
 export class UploadImageComponent implements OnInit {
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -18,8 +20,14 @@ export class UploadImageComponent implements OnInit {
 
   processFile(imageInput) {
     this.accountService.uploadProfilePicture(imageInput.files[0])
-    .pipe(first()).subscribe(fileName => {
-      console.log(fileName);
-    });
+    .pipe(first())
+    .subscribe(
+      fileName => {
+        console.log(fileName);
+      },
+      error => {
+        this.alertService.create('Upload error', 'danger', error.message);
+      }
+    );
   }
 }

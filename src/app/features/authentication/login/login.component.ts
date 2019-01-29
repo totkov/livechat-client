@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { LogInModel } from '../../../models/login-model';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -34,9 +36,8 @@ export class LoginComponent implements OnInit {
                   window.location.reload();
                 },
                 error => {
-                  console.log(error);
                   this.loading = false;
-                  alert('Error!');
+                  this.alertService.create('Login error', 'danger', 'Invalid username or password');
                 });
   }
 

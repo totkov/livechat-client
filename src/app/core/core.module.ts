@@ -5,6 +5,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { ChatService } from '../services/chat.service';
 import { AccountService } from '../services/account.service';
 import { NotificationService } from '../services/notification.service';
+import { AlertService } from '../services/alert.service';
 
 @NgModule({
   providers: [
@@ -12,7 +13,8 @@ import { NotificationService } from '../services/notification.service';
     AuthGuard,
     ChatService,
     AccountService,
-    NotificationService
+    NotificationService,
+    AlertService
   ]
 })
 export class CoreModule {

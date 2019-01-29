@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { ChatService } from '../../../services/chat.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-send-message',
@@ -19,7 +20,8 @@ export class SendMessageComponent implements OnInit {
   successfullySend: EventEmitter<any>;
 
   constructor(
-    private chatService: ChatService
+    private chatService: ChatService,
+    private alertService: AlertService
   ) {
     this.successfullySend = new EventEmitter();
   }
@@ -34,8 +36,7 @@ export class SendMessageComponent implements OnInit {
         this.textBox.nativeElement.value = '';
       },
       error => {
-        console.log(error);
-        alert(error.error.message);
+        this.alertService.create('Send message error', 'danger', error.error.message);
       }
     );
   }

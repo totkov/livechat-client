@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { SignUpModel } from '../../../models/signup-model';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -53,9 +55,8 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/authentication/login'], {});
         },
         error => {
-          console.log(error);
+          this.alertService.create('Registration error', 'danger', error.error.message);
           this.loading = false;
-          alert('Error!');
         });
   }
 

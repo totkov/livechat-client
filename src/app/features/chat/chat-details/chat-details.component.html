@@ -5,6 +5,7 @@
 </h3>
 
 <div #scrollMe class="chat-container">
+  <div class="shadow"></div>
   <app-message-item *ngFor="let message of chat?.messages" [message]="message"></app-message-item>
 </div>
 

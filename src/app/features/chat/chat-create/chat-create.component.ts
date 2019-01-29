@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { ChatService } from '../../../services/chat.service';
 import { SearchUserResultModel } from '../../../models/search-user-result-model';
 import { AccountService } from '../../../services/account.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-chat-create',
@@ -19,7 +20,8 @@ export class ChatCreateComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -27,18 +29,28 @@ export class ChatCreateComponent implements OnInit {
   }
 
   createChat(userId: number) {
-    this.createdChat.emit();
-    this.chatService.create(userId).pipe(first()).subscribe(data => {
-      this.createdChat.emit(data);
-    });
+    this.chatService.create(userId).pipe(first())
+    .subscribe(
+      data => {
+        this.createdChat.emit(data);
+      },
+      error => {
+        this.alertService.create('Error', 'danger', error.message);
+      }
+    );
   }
 
   private loadData(phrase: string, page: number) {
     this.accountService.searchUser(phrase, page, 5)
       .pipe(first())
-      .subscribe(result => {
-        this.searchResult = result;
-      });
+      .subscribe(
+        result => {
+          this.searchResult = result;
+        },
+        error => {
+          this.alertService.create('Error', 'danger', 'Error');
+        }
+      );
   }
 
   getEmitter() {
